@@ -5,45 +5,105 @@
             <form (ngSubmit)="onSubmit()"> 
                 <fieldset>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input required type="text"  name="username" [(ngModel)]="user.username" id="username"
+                        <label for="username">User Name</label>
+                        <input required type="text"  name="username"  minlength="3" maxlength="10" pattern="[a-zA-Z]*" required #uname="ngModel" [(ngModel)]="user.username" id="username"
                             class="form-control phone" maxlength="28" placeholder="Enter username" />
+                            <div *ngIf="uname.errors && (uname.dirty || uname.touched)">
+                                <div [hidden]="!uname.errors.required">
+                                 please enter name!
+                                 </div>
+                                 <div [hidden]="!uname.errors.minlength">
+                                     please enter minimum 3 characters! 
+                                 </div>
+                                 <div [hidden]="!uname.errors.pattern">
+                                 please enter both uppercase and lowercase letters only alphabets!
+                                 </div>
+                             </div>  
                     </div>
 
                     <div class="form-group">
                     
-                        <label for="firstname">Firstname</label>
-                        <input class="form-control" type="text"  name="firstname"  [(ngModel)]="user.firstname"id="txt" required
+                        <label for="firstname">First Name</label>
+                        <input class="form-control" type="text"  name="firstname" minlength="3" maxlength="10" pattern="[a-zA-Z]*" required #fname="ngModel" [(ngModel)]="user.firstname" [(ngModel)]="user.firstname"id="txt" required
                             placeholder="Enter your firstname" />
+                            <div *ngIf="fname.errors && (fname.dirty || fname.touched)">
+                                <div [hidden]="!fname.errors.required">
+                                 please enter first name!
+                                 </div>
+                                 <div [hidden]="!fname.errors.minlength">
+                                     please enter minimum 3 characters!
+                                 </div>
+                                 <div [hidden]="!fname.errors.pattern">
+                                 please enter both uppercase and lowercase letters only alphabets!
+                                 </div>
+                             </div>     
                     </div>
 
                     <div class="form-group">
-                        <label for="lastname">Lastname</label>
-                        <input class="form-control" type="text"  name="lastname"  [(ngModel)]="user.lastname"id="txt"
+                        <label for="lastname">Last Name</label>
+                        <input class="form-control" type="text"  name="lastname"  minlength="3" maxlength="10" pattern="[a-zA-Z]*" required #lname="ngModel"  [(ngModel)]="user.lastname"id="txt"
                             placeholder="Enter your lastname" required />
-                        <div id="errLast"></div>
+                            <div *ngIf="lname.errors && (lname.dirty || lname.touched)">
+                                <div [hidden]="!lname.errors.required">
+                                 please enter name!
+                                 </div>
+                                 <div [hidden]="!lname.errors.minlength">
+                                     please enter minimum 3 characters!
+                                 </div>
+                                 <div [hidden]="!lname.errors.pattern">
+                                 please enter both uppercase and lowercase letters only alphabets!
+                                 </div>
+                             </div>
                     </div>
 
                     <div class="form-group">
                         <label for="age">Age</label>
-                        <input class="form-control" required type="text"  name="age"  [(ngModel)]="user.age"
+                        <input class="form-control" required type="text"  name="age"  minlength="2"   required #reg_age="ngModel" [(ngModel)]="user.age"
                             id="age" placeholder="Enter your age" />
+                            <div *ngIf="reg_age.errors && (reg_age.dirty || reg_age.touched)">
+                                <div [hidden]="!reg_age.errors.required">
+                                 please enter age!
+                                 </div>
+                                 <div [hidden]="!reg_age.errors.minlength">
+                                     please enter minimum 2 digits!
+                                 </div>
+                                 <!-- <div [hidden]="!reg_age.errors.maxlength">
+                                 only 3 digits allowed !
+                                 </div> -->
+                             </div> 
+                        </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" required type="text"  name="password" required #password="ngModel" [(ngModel)]="user.password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  id="password" placeholder="Enter your password" />
+                        <div *ngIf="password.errors &&(password.dirty || password.touched)">
+                            <div [hidden]="!password.errors.required">
+                                please enter password!
+                            </div> 
+                            <div [hidden]="!password.errors.pattern">
+                                please follow the password pattern Password must contain atleast one uppercase letter, one lowercase letter , one number and atleast 8 or more characters !
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" required type="text"  name="password"  [(ngModel)]="user.password"
-                            id="password" placeholder="Enter your password" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input class="form-control" required type="text"  name="confirmpassword"  [(ngModel)]="user.confirmpassword"
-                            id="password" placeholder="Enter your password" />
+                        <input class="form-control" required type="text"  name="confirmpassword"  required #confirmpassword="ngModel"  [(ngModel)]="user.confirmpassword"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  id="password" placeholder="Enter your password" />
+                        <div *ngIf="confirmpassword.errors &&(confirmpassword.dirty || confirmpassword.touched)">
+                            <div [hidden]="!confirmpassword.errors.required">
+                                please enter password!
+                            </div> 
+                            <div [hidden]="!confirmpassword.errors.pattern">
+                                please follow the password pattern Password must contain atleast one uppercase letter, one lowercase letter , one number and atleast 8 or more characters !
+                            </div>
+                        </div>
                     </div>
 
 
                     <div class="form-group">
-                        <input class="btn btn-success" type="submit" name="submit_reg" value="submit" (click)="updateUsernow()">
+                        <input class="btn btn-success" type="submit"  value="submit" ><!--(click)="updateUsernow()"-->
                     </div>
                 </fieldset>
             </form>

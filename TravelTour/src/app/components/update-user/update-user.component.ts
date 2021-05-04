@@ -28,8 +28,6 @@ export class UpdateUserComponent implements OnInit {
     }
     ,error=>console.log(error));
   }
-
-
   public updateUsernow(){
   this.router.navigate(['allusers']);
  }

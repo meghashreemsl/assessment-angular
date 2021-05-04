@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { Observable } from 'rxjs';
+import { UserLogin } from './login';
 
 @Injectable({
   providedIn: 'root'
@@ -29,4 +30,8 @@ private baseURL ="http://localhost:9999/update";
   public update(id:number,user:User):Observable<Object>{
     return this.http.put(`${this.baseURL}/${id}`,user);
   }
+  public login(userlogin){
+    return this.http.post("http://localhost:9999/login",userlogin,{responseType:"text" as "json"});
+  }
+
 }

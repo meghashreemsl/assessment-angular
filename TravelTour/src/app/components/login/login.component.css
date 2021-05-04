@@ -1,0 +1,11 @@
+input {
+    width: 50%;
+    
+  }
+  input[type=submit] {
+    width: 20%;
+    padding: 10px 20px;
+    
+    margin: 10px 150px;
+    box-sizing: border-box;
+  }

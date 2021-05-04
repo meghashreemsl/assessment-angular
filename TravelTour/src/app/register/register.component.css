@@ -1,0 +1,18 @@
+input {
+    width: 50%;
+    
+  }
+  input[type=reset] {
+    width: 20%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    margin-bottom:30px;
+  }
+  input[type=submit] {
+    width: 20%;
+    padding: 10px 20px;
+    margin-bottom:30px;
+    margin: 10px 25px;
+    box-sizing: border-box;
+  }

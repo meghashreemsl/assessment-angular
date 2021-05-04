@@ -12,9 +12,7 @@ const routes: Routes = [
   { path:'search',component:SearchComponent},
   { path:'allusers',component:AllusersComponent},
   { path:'login',component:LoginComponent},
-  { path: 'update/:id',component:UpdateUserComponent}
-
-  
+  { path: 'update/:id',component:UpdateUserComponent} 
 ];
 
 @NgModule({

@@ -17,13 +17,12 @@ export class AllusersComponent implements OnInit {
     let response=this.service.getUsers();
     response.subscribe(data => this.users = data);
   }
-  
+
  public removeUser(username:string){
    let response = this.service.delete(username);
      response.subscribe(data => this.users = data);
    }
   
-
    public updateUser(id:number,user:User){
     this.router.navigate(['update',id]);
    }
